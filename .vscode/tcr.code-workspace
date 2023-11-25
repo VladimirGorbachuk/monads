@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"emeraldwalk.runonsave": {
+			"commands": [
+				{
+					"match": ".*\\.py",
+					"cmd": "python ${file} && git add . && git commit -am working || git reset --hard",
+					 },
+				{
+					"match": ".*",
+					"isAsync": true,
+					"cmd": "echo 'I run for all files.'"
+				},
+				{
+					"match": "\\.txt$",
+					"cmd": "echo 'I am a .txt file ${file}.'"
+				},
+				{
+					"match": "\\.js$",
+					"cmd": "echo 'I am a .js file ${file}.'"
+				},
+				{
+					"match": ".*",
+					"cmd": "echo 'I am ${env.USERNAME}.'"
+				}
+			]
+		}
+	}
+}
