@@ -1,4 +1,5 @@
 import pytest
+from tcr import wtf
 
 
 def test_wtf():
