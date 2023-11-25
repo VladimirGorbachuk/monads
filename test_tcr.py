@@ -22,3 +22,4 @@ def test():
 def test_omg():
     omg = Omg()
     assert omg + omg == omg
+    assert omg + 1 == omg
