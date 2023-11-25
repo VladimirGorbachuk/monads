@@ -27,4 +27,4 @@ def test_omg():
 
 
 def test_ooo():
-    pass
+    assert 1==1
