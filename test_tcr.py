@@ -24,3 +24,6 @@ def test_omg():
     assert omg + omg == omg
     assert omg + 1 == omg
     assert omg - 1 == omg
+
+def test_ooo():
+    pass
