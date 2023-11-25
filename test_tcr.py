@@ -13,3 +13,7 @@ def test_wtf_2():
 
 def test_wtf_3():
     assert wtf("a", "b") == "ab"
+
+
+def test():
+    ""
