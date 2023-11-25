@@ -17,3 +17,7 @@ def test_wtf_3():
 
 def test():
     assert "" == ""
+
+
+def test_omg():
+    assert 1 == 1
