@@ -28,3 +28,4 @@ def test_omg():
 
 def test_ooo():
     assert 1==1
+    assert 2==2
