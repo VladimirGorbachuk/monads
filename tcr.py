@@ -8,4 +8,5 @@ def wtf(first, second):
 
 
 class Omg():
-    pass
+    def __add__(self, other):
+        pass
