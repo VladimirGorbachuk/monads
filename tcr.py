@@ -5,3 +5,7 @@ assert 5==5
 
 def wtf(first, second):
     return first + second
+
+
+class Omg():
+    pass
