@@ -8,4 +8,4 @@ def test_wtf():
 
 
 def test_wtf_2():
-    assert wtf(2,3) == 5
+    assert wtf(2, 3) == 5
