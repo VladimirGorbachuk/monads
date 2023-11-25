@@ -13,7 +13,7 @@
 				},
 				{
 					"match": ".*\\.py",
-					"cmd": "./venv/bin/python ${file} && git add . && git commit -am working || git reset --hard",
+					"cmd": "./venv/bin/python -m pytest . && git add . && git commit -am working || git reset --hard",
 				},
 				{
 					"match": ".*",
