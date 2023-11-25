@@ -9,3 +9,7 @@ def test_wtf():
 
 def test_wtf_2():
     assert wtf(2, 3) == 5
+
+
+def test_wtf_3():
+    assert wtf("a", "b") == "ab"

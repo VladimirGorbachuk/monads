@@ -8,7 +8,7 @@
 		"emeraldwalk.runonsave": {
 			"commands": [
 				{
-					"match": ".*\\.py",
+					"match": "^(?!test).*.py",
 					"cmd": "./venv/bin/python -m pytest . && git add . && git commit -am working || git reset --hard",
 				},
 				{
