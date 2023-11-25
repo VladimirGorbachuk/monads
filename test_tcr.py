@@ -1,5 +1,6 @@
-import pytest
 from tcr import wtf
+
+import pytest
 
 
 def test_wtf():
