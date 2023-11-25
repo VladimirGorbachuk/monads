@@ -16,4 +16,4 @@ def test_wtf_3():
 
 
 def test():
-    "" == ""
+    assert "" == ""
