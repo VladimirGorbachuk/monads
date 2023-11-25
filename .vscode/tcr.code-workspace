@@ -9,8 +9,12 @@
 			"commands": [
 				{
 					"match": ".*\\.py",
-					"cmd": "python ${file} && git add . && git commit -am working || git reset --hard",
-					 },
+					"cmd": "python3 ${file} && git add . && git commit -am working || git reset --hard",
+				},
+				{
+					"match": ".*\\.py",
+					"cmd": "./venv/bin/python ${file} && git add . && git commit -am working || git reset --hard",
+				},
 				{
 					"match": ".*",
 					"isAsync": true,
