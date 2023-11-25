@@ -9,4 +9,4 @@ def wtf(first, second):
 
 class Omg():
     def __add__(self, other):
-        pass
+        return Omg()
