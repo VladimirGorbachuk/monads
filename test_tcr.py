@@ -1,4 +1,4 @@
-from tcr import wtf
+from tcr import Omg, wtf
 
 import pytest
 
