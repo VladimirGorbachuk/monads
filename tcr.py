@@ -39,7 +39,7 @@ class AsyncMonadWithException:
     def __init__(
             self,
             *,
-            value: Any,
+            value: Optional[Any] = None,
             coroutine: Optional[Coroutine] = None,
             exception: Optional[Exception] = None,
         ) -> None:
