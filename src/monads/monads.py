@@ -6,8 +6,10 @@ class MonadWithException:
         self._value = value
         self._exception = exception
 
-    def __eq__(self, other: "MonadWithException") -> bool:
-        return self._value == other._value and self._exception == other._exception
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, MonadWithException):
+            return self._value == other._value and self._exception == other._exception
+        return False
     
     @property
     def value(self) -> Any:
