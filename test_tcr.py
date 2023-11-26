@@ -87,3 +87,10 @@ async def test_async_monad_async_bind_pipe_doesnt_mutate_starting_monad():
     result_monad = async_monad.async_bind(async_add_one).async_bind(async_add_one)
     await result_monad.get_value()
     assert copy_monad == async_monad
+
+
+@pytest.mark.asyncio
+async def test_async_monad_sync_bind():
+    async_monad = AsyncMonadWithException(value=1)
+    result_monad = async_monad.bind(lambda x: x+1)
+    assert await result_monad.get_value() == 2
