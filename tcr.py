@@ -68,4 +68,4 @@ class AsyncMonadWithException:
                 return AsyncMonadWithException(value=new_value, coroutine=self._coroutine, exception=self._exception)
             except Exception as e:
                 return AsyncMonadWithException(value=self._value, coroutine=self._coroutine, exception = e)
-        return AsyncMonadWithException(value=self._value, exception=self._exception, coroutine=new_coroutine)
+        return AsyncMonadWithException(value=self._value, exception=self._exception, coroutine=new_coroutine())
