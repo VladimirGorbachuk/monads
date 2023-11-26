@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from monads.monads import AsyncMonadWithException, MonadWithException
+from monads.monads import AsyncMonadWithException, LazyEvalMonadWithException, MonadWithException
 from example_funcs import async_add_one, factorial, async_divide_one_by_value
 
 import pytest
@@ -8,6 +8,12 @@ import pytest
 
 def test_monad():
     monad = MonadWithException(value=1)
+    res = monad.bind(lambda x: x)
+    assert res.value == 1
+
+
+def test_lazy_monad():
+    monad = LazyEvalMonadWithException(value=1)
     res = monad.bind(lambda x: x)
     assert res.value == 1
 
@@ -27,6 +33,12 @@ def test_monad_zero_division():
 
 def test_monad_pipe():
     monad = MonadWithException(value=1)
+    res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
+    assert res.value == 3
+
+
+def test_lazy_eval_monad_pipe():
+    monad = LazyEvalMonadWithException(value=1)
     res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
     assert res.value == 3
 
