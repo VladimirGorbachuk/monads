@@ -35,6 +35,9 @@ class AsyncMonadWithException:
         self._coroutine = coroutine
         self._exception = exception
     
+    def __eq__(self, other: "AsyncMonadWithException") -> bool:
+        return self._value == other._value and self._coroutine == other._coroutine and self._exception == other._exception
+    
     async def get_value(self) -> Any:
         if self._exception:
             raise self._exception
