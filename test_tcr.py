@@ -2,6 +2,7 @@ from tcr import AsyncMonadWithException, MonadWithException, Omg, wtf
 from example_funcs import factorial
 
 import pytest
+import pytest_asyncio
 
 
 def test_wtf():
