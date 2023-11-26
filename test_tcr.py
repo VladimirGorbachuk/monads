@@ -31,6 +31,14 @@ def test_monad_pipe():
     assert res.value == 3
 
 
+def test_monad_pipe_doesnt_mutate_first_monad():
+    monad = MonadWithException(value=1)
+    copy_monad = deepcopy(monad)
+    res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
+    res.value
+    assert monad == copy_monad
+
+
 def test_monad_pipe_keeps_exception():
     monad = MonadWithException(value = 0)
     res = monad.bind(lambda x: 1/x).bind(lambda x: x+1)
