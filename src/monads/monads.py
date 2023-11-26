@@ -106,7 +106,7 @@ class AsyncMonadWithException:
             monad = await self._coroutine
             return await monad.get_value()
         return self._value
-    
+
     def async_bind(self, func: Callable[[Any], Awaitable]) -> "AsyncMonadWithException":
         async def new_coroutine() -> AsyncMonadWithException:
             value = await self.get_value()
