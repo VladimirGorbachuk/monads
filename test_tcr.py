@@ -65,5 +65,6 @@ async def test_async_monad_async_bind_pipe():
 @pytest.mark.asyncio
 async def test_async_monad_raises():
     async_monad = AsyncMonadWithException(value=0)
-    result_monad = async_monad.async_bind(async_add_one).async_bind(async_add_one)
-    assert await result_monad.get_value() == 2
+    result_monad = async_monad.async_bind(async_divide_one_by_value).async_bind(async_add_one)
+    with pytest.raises(ZeroDivisionError):
+        await result_monad.get_value()
