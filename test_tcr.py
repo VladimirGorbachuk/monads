@@ -37,3 +37,9 @@ def test_monad():
     monad = MonadWithException(value=1)
     res = monad.bind(lambda x: x)
     assert res.value == 1
+
+
+def test_factorial():
+    monad = MonadWithException(value=2)
+    res = monad.bind(factorial)
+    assert res.value == 2
