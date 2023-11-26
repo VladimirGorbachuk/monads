@@ -58,7 +58,7 @@ class LazyEvalMonadWithException:
             if self._exception:
                 raise self._exception
         return self._value
-    
+
     def bind(self, func: Callable) -> "LazyEvalMonadWithException":
         return LazyEvalMonadWithException(
             value=self._value, 
