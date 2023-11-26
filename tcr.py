@@ -41,6 +41,7 @@ class AsyncMonadWithException:
             *,
             value: Any,
             coroutine: Optional[Coroutine] = None,
+            exception: Optional[Exception] = None,
         ) -> None:
         self._value = value
         self._coroutine = coroutine
