@@ -70,3 +70,14 @@ def test_monad_pipe_keeps_exception():
 async def test_async_monad_get_value():
     async_monad = AsyncMonadWithException(value=1)
     assert await async_monad.get_value() == 1
+
+
+
+async def _add_one(value):
+    return value + 1
+
+
+@pytest.mark.asyncio
+async def test_async_monad_get_value():
+    async_monad = AsyncMonadWithException(value=1)
+    assert await async_monad.get_value() == 1
