@@ -56,3 +56,10 @@ def test_monad_pipe():
     monad = MonadWithException(value=1)
     res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
     assert res.value == 3
+
+
+def test_monad_pipe_keeps_exception():
+    monad = MonadWithException(value = 0)
+    res = monad.bind(lambda x: 1/x).bind(lambda x: x+1)
+    with pytest.raises(ZeroDivisionError):
+        res.value
