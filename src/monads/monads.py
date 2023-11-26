@@ -1,4 +1,4 @@
-from typing import Any, Callable, Coroutine, List, Optional
+from typing import Any, Awaitable, Callable, Coroutine, List, Optional
 
 
 class MonadWithException:
@@ -97,7 +97,7 @@ class AsyncMonadWithException:
             return await monad.get_value()
         return self._value
     
-    def async_bind(self, func: Coroutine) -> "AsyncMonadWithException":
+    def async_bind(self, func: Callable[Any, Awaitable]) -> "AsyncMonadWithException":
         async def new_coroutine() -> AsyncMonadWithException:
             value = await self.get_value()
             try:
