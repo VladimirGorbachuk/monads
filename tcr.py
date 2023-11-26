@@ -7,7 +7,7 @@ class MonadWithException:
         self._exception = exception
 
     def __eq__(self, other: "MonadWithException") -> bool:
-        return self._value == other._value and self._coroutine == other._coroutine and self._exception == other._exception
+        return self._value == other._value and self._exception == other._exception
     
     @property
     def value(self) -> Any:
