@@ -45,6 +45,7 @@ class AsyncMonadWithException:
         ) -> None:
         self._value = value
         self._coroutine = coroutine
+        self._exception = exception
     
     async def get_value(self) -> Any:
         return await self._coroutine
