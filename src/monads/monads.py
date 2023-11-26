@@ -38,7 +38,6 @@ class LazyEvalMonadWithException:
     ) -> None:
         self._value = value
         self._exception = exception
-        print("current bind stack", bind_stack)
         if bind_stack is None:
             self._bind_stack = []
         else:
