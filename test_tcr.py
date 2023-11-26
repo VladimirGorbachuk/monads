@@ -101,3 +101,10 @@ async def test_async_monad_async_and_sync_bind_pipe():
     async_monad = AsyncMonadWithException(value=1)
     result_monad = async_monad.async_bind(async_add_one).bind(lambda x: x+1)
     assert await result_monad.get_value() == 3
+
+
+@pytest.mark.asyncio
+async def test_async_monad_with_map():
+    async_monad = AsyncMonadWithException(value=[1,2,3])
+    result_monad = async_monad.bind(lambda collection: list(map(lambda x: x+1, collection)))
+    assert await result_monad.get_value() == [2,3,4]
