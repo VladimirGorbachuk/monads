@@ -1,18 +1,6 @@
 from typing import Any, Callable, Coroutine, Optional
 
 
-def wtf(first, second):
-    return first + second
-
-
-class Omg():
-    def __add__(self, other):
-        return self
-    
-    def __sub__(self, other):
-        return self
-    
-
 class MonadWithException:
     def __init__(self, *, value: Any, exception: Optional[Exception] = None) -> None:
         self._value = value
