@@ -1,5 +1,5 @@
 from tcr import AsyncMonadWithException, MonadWithException
-from example_funcs import factorial
+from example_funcs import add_one, factorial
 
 import pytest
 
@@ -42,11 +42,6 @@ async def test_async_monad_get_value():
     assert await async_monad.get_value() == 1
 
 
-
-async def _add_one(value):
-    return value + 1
-
-
 @pytest.mark.asyncio
 async def test_async_monad_get_value():
     async_monad = AsyncMonadWithException(value=1)
@@ -56,5 +51,5 @@ async def test_async_monad_get_value():
 @pytest.mark.asyncio
 async def test_async_monad_async_bind():
     async_monad = AsyncMonadWithException(value=1)
-    result_monad = async_monad.async_bind(_add_one)
+    result_monad = async_monad.async_bind(add_one)
     assert await result_monad.get_value() == 2
