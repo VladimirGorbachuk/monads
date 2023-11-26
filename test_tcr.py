@@ -43,3 +43,10 @@ def test_monad_factorial():
     monad = MonadWithException(value=2)
     res = monad.bind(factorial)
     assert res.value == 2
+
+
+def test_monad_zero_division():
+    monad = MonadWithException(value = 0)
+    res = monad.bind(lambda x: 1/x)
+    with pytest.raises(ZeroDivisionError):
+        res.value
