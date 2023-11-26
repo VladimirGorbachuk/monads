@@ -50,3 +50,7 @@ def test_monad_zero_division():
     res = monad.bind(lambda x: 1/x)
     with pytest.raises(ZeroDivisionError):
         res.value
+
+
+def test_monad_pipe():
+    monad = MonadWithException(value=1)
