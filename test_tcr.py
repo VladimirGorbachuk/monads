@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from tcr import AsyncMonadWithException, MonadWithException
 from example_funcs import async_add_one, factorial, async_divide_one_by_value
 
@@ -68,3 +70,12 @@ async def test_async_monad_raises():
     result_monad = async_monad.async_bind(async_divide_one_by_value).async_bind(async_add_one)
     with pytest.raises(ZeroDivisionError):
         await result_monad.get_value()
+
+
+@pytest.mark.asyncio
+async def test_async_monad_async_bind_pipe_doesnt_mutate_starting_monad():
+    async_monad = AsyncMonadWithException(value=1)
+    copy_monad = deepcopy(async_monad)
+    result_monad = async_monad.async_bind(async_add_one).async_bind(async_add_one)
+    await result_monad.get_value()
+    assert copy_monad == async_monad
