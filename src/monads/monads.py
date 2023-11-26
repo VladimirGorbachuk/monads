@@ -80,16 +80,16 @@ class LazyEvalMonadWithException:
 
 class AsyncMonadWithException:
     def __init__(
-            self,
-            *,
-            value: Optional[Any] = None,
-            coroutine: Optional[Coroutine] = None,
-            exception: Optional[Exception] = None,
-        ) -> None:
+        self,
+        *,
+        value: Optional[Any] = None,
+        coroutine: Optional[Coroutine] = None,
+        exception: Optional[Exception] = None,
+    ) -> None:
         self._value = value
         self._coroutine = coroutine
         self._exception = exception
-    
+
     def __eq__(self, other: object) -> bool:
         if isinstance(other, AsyncMonadWithException):
             return self._value == other._value and self._coroutine == other._coroutine and self._exception == other._exception
