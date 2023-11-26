@@ -50,7 +50,6 @@ class AsyncMonadWithException:
     async def get_value(self) -> Any:
         if self._exception:
             raise self._exception
-        print("coroutine?")
         if self._coroutine:
             monad = await self._coroutine
             return await monad.get_value()
