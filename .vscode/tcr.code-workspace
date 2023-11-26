@@ -10,7 +10,7 @@
 			{
 				"match": "^(?!test).*\\.py",
 				"notMatch": "^test_.*.py",
-				"command": "./venv/bin/python -m pytest . -vv && git add . && git commit -am working --no-verify || git reset --hard",
+				"command": "./venv/bin/python -m pytest . -vv && git add . && git commit -am working || git reset --hard",
 			}
 		],
 	}
