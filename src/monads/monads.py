@@ -93,8 +93,8 @@ class AsyncMonadWithException:
     def __eq__(self, other: object) -> bool:
         if isinstance(other, AsyncMonadWithException):
             return (
-                self._value == other._value 
-                and self._coroutine == other._coroutine 
+                self._value == other._value
+                and self._coroutine == other._coroutine
                 and self._exception == other._exception
             )
         return False
