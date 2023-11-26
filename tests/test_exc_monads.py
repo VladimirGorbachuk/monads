@@ -132,6 +132,6 @@ async def test_async_monad_with_map():
 
 @pytest.mark.asyncio
 async def test_async_monad_with_map_list_pipe():
-    async_monad = AsyncMonadWithException(value=[1,2,3,4])
+    async_monad = AsyncMonadWithException(value=[1, 2, 3, 4])
     result_monad = async_monad.bind(lambda collection: map(lambda x: x+1, collection)).bind(list)
     assert await result_monad.get_value() == [2, 3, 4, 5]
