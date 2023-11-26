@@ -1,4 +1,4 @@
-from tcr import Omg, wtf
+from tcr import MonadWithException, Omg, wtf
 from example_funcs import factorial
 
 import pytest
