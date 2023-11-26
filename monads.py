@@ -62,4 +62,4 @@ class AsyncMonadWithException:
     def bind(self, func: Callable) -> "AsyncMonadWithException":
         async def func_as_coroutine(*args, **kwargs) -> Any:
             return func(*args, **kwargs)
-        self.async_bind(func_as_coroutine)
+        return self.async_bind(func_as_coroutine)
