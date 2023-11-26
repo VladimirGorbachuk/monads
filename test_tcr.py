@@ -36,3 +36,4 @@ def test_ooo():
 def test_monad():
     monad = MonadWithException(value=1)
     res = monad.bind(lambda x: x)
+    assert res.value == 1
