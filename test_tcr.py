@@ -1,4 +1,5 @@
 from tcr import Omg, wtf
+from example_funcs import factorial
 
 import pytest
 
