@@ -35,4 +35,4 @@ def test_ooo():
 
 def test_monad():
     monad = MonadWithException(value=1)
-    monad.bind(lambda x: x)
+    res = monad.bind(lambda x: x)
