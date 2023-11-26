@@ -53,3 +53,10 @@ async def test_async_monad_async_bind():
     async_monad = AsyncMonadWithException(value=1)
     result_monad = async_monad.async_bind(async_add_one)
     assert await result_monad.get_value() == 2
+
+
+@pytest.mark.asyncio
+async def test_async_monad_async_bind():
+    async_monad = AsyncMonadWithException(value=1)
+    result_monad = async_monad.async_bind(async_add_one)
+    assert await result_monad.get_value() == 2
