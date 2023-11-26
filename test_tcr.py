@@ -63,3 +63,8 @@ def test_monad_pipe_keeps_exception():
     res = monad.bind(lambda x: 1/x).bind(lambda x: x+1)
     with pytest.raises(ZeroDivisionError):
         res.value
+
+
+async def test_async_monad_get_value():
+    async_monad = AsyncMonadWithException(value=1)
+    assert await async_monad.get_value() == 1
