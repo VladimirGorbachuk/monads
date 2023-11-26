@@ -23,4 +23,14 @@ class MonadWithException:
         if self._exception:
             raise self._exception
         return self._value
+    
+    def bind(self, func: Callable) -> "MonadWithException":
+        if self._exception:
+            return self
+        try:
+            value = func(self.value)
+            return MonadWithException(value=value)
+        except Exception as e:
+            self._exception = e
+            return self
          
