@@ -110,7 +110,7 @@ class AsyncMonadWithException:
                 new_value = await func(value)
                 return AsyncMonadWithException(value=new_value, exception=self._exception)
             except Exception as e:
-                return AsyncMonadWithException(value=self._value, exception = e)
+                return AsyncMonadWithException(value=self._value, exception=e)
         return AsyncMonadWithException(value=self._value, exception=self._exception, coroutine=new_coroutine())
     
     def bind(self, func: Callable) -> "AsyncMonadWithException":
