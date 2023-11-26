@@ -51,7 +51,8 @@ class AsyncMonadWithException:
         if self._exception:
             raise self._exception
         if self._coroutine:
-            return await self._coroutine
+            monad = await self._coroutine
+            return await monad.get_value()
         return self._value
     
     def async_bind(self, func: Coroutine) -> "AsyncMonadWithException":
