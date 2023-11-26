@@ -30,12 +30,12 @@ class MonadWithException:
 
 class LazyEvalMonadWithException:
     def __init__(
-            self,
-            *,
-            value: Any,
-            exception: Optional[Exception] = None,
-            bind_stack: Optional[List[Callable]] = None,
-        ) -> None:
+        self,
+        *,
+        value: Any,
+        exception: Optional[Exception] = None,
+        bind_stack: Optional[List[Callable]] = None,
+    ) -> None:
         self._value = value
         self._exception = exception
         print("current bind stack", bind_stack)
