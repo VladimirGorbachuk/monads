@@ -1,4 +1,4 @@
-from typing import Any, Callable, Optional
+from typing import Any, Callable, Coroutine, Optional
 
 
 def wtf(first, second):
@@ -33,4 +33,27 @@ class MonadWithException:
         except Exception as e:
             self._exception = e
             return self
-         
+
+
+class AsyncMonadWithException:
+    def __init__(
+            self,
+            *,
+            value: Any,
+            coroutine: Optional[Coroutine] = None,
+        ) -> None:
+        self._value = value
+        self._coroutine = coroutine
+    
+    async def get_value(self) -> Any:
+        return await self._coroutine
+    
+    def async_bind(self, func: Coroutine) -> "AsyncMonadWithException":
+        if not self._coroutine:
+            self._coroutine = func(self._value)
+            return self
+        async def new_coroutine():
+            res = await self._coroutine
+            return await func(res)
+        self._coroutine = new_coroutine
+        return self
