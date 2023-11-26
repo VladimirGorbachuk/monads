@@ -1,4 +1,4 @@
-from tcr import AsyncMonadWithException, MonadWithException, Omg, wtf
+from tcr import AsyncMonadWithException, MonadWithException
 from example_funcs import factorial
 
 import pytest
