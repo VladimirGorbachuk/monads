@@ -60,11 +60,9 @@ class AsyncMonadWithException:
     def async_bind(self, func: Coroutine) -> "AsyncMonadWithException":
         print("binding")
         async def new_coroutine() -> AsyncMonadWithException:
-            print("Called once")
             value = await self.get_value()
             try:
                 new_value = await func(value)
-                print('new value is', new_value)
                 return AsyncMonadWithException(value=new_value, coroutine=self._coroutine, exception=self._exception)
             except Exception as e:
                 return AsyncMonadWithException(value=self._value, coroutine=self._coroutine, exception = e)
