@@ -5,3 +5,7 @@ def factorial(number: int) -> int:
     for i in range(1, number+1):
         result *= i
     return result
+
+
+async def add_one(value):
+    return value + 1
