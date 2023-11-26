@@ -10,7 +10,7 @@ class MonadWithException:
         if isinstance(other, MonadWithException):
             return self._value == other._value and self._exception == other._exception
         return False
-    
+
     @property
     def value(self) -> Any:
         if self._exception:
