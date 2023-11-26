@@ -59,7 +59,7 @@ class AsyncMonadWithException:
             value = await self.get_value()
             try:
                 new_value = await func(value)
-                return AsyncMonadWithException(value=new_value, coroutine=self._coroutine, exception=self._exception)
+                return AsyncMonadWithException(value=None, coroutine=self._coroutine, exception=self._exception)
             except Exception as e:
                 return AsyncMonadWithException(value=self._value, coroutine=self._coroutine, exception = e)
         return AsyncMonadWithException(value=self._value, exception=self._exception, coroutine=new_coroutine)
