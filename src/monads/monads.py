@@ -26,6 +26,31 @@ class MonadWithException:
             return self
 
 
+class LazyEvalMonadWithException:
+    def __init__(self, *, value: Any, exception: Optional[Exception] = None) -> None:
+        self._value = value
+        self._exception = exception
+
+    def __eq__(self, other: "MonadWithException") -> bool:
+        return self._value == other._value and self._exception == other._exception
+    
+    @property
+    def value(self) -> Any:
+        if self._exception:
+            raise self._exception
+        return self._value
+    
+    def bind(self, func: Callable) -> "MonadWithException":
+        if self._exception:
+            return self
+        try:
+            value = func(self.value)
+            return MonadWithException(value=value)
+        except Exception as e:
+            self._exception = e
+            return self
+
+
 class AsyncMonadWithException:
     def __init__(
             self,
