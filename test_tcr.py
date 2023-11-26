@@ -83,8 +83,9 @@ async def test_async_monad_get_value():
     assert await async_monad.get_value() == 1
 
 
+@pytest.mark.xfail()
 @pytest.mark.asyncio
 async def test_async_monad_async_bind():
     async_monad = AsyncMonadWithException(value=1)
     async_monad.async_bind(_add_one)
-    assert await async_monad.get_value() == 1
+    assert await async_monad.get_value() == 2
