@@ -9,3 +9,7 @@ def factorial(number: int) -> int:
 
 async def async_add_one(value):
     return value + 1
+
+
+async def async_divide_one_by_value(value):
+    return 1/value
