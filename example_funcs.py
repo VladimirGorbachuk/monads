@@ -7,10 +7,5 @@ def factorial(number: int) -> int:
     return result
 
 
-async def add_one(value):
-    return value + 1
-
-
-
 async def async_add_one(value):
     return value + 1
