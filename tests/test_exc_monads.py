@@ -72,7 +72,6 @@ def test_monad_pipe_keeps_exception():
         res.value
 
 
-@pytest.mark.xfail()
 def test_monad_pipe_keeps_exception_doesnt_mutate():
     monad = MonadWithException(value=0)
     copy_monad = deepcopy(monad)
