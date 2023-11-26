@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from monads.monads import AsyncMonadWithException, LazyEvalMonadWithException, MonadWithException
+from monads.exc_monads import AsyncMonadWithException, LazyEvalMonadWithException, MonadWithException
 from example_funcs import async_add_one, factorial, async_divide_one_by_value
 
 import pytest
