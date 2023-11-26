@@ -65,6 +65,7 @@ class LazyEvalMonadWithException:
         if self._exception:
             return self
         try:
+            print("called?")
             value = func(self._value)
             return LazyEvalMonadWithException(value=value)
         except Exception as e:
