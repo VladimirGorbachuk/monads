@@ -25,8 +25,7 @@ class MonadWithException:
             value = func(self.value)
             return MonadWithException(value=value)
         except Exception as e:
-            self._exception = e
-            return self
+            return MonadWithException(value=self._value, exception=e)
 
 
 class LazyEvalMonadWithException:
