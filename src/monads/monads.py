@@ -1,4 +1,4 @@
-from typing import Any, Callable, Coroutine, Optional
+from typing import Any, Callable, Coroutine, List, Optional
 
 
 class MonadWithException:
@@ -27,9 +27,19 @@ class MonadWithException:
 
 
 class LazyEvalMonadWithException:
-    def __init__(self, *, value: Any, exception: Optional[Exception] = None) -> None:
+    def __init__(
+            self,
+            *,
+            value: Any,
+            exception: Optional[Exception] = None,
+            bind_stack: Optional[List[Callable]] = None,
+        ) -> None:
         self._value = value
         self._exception = exception
+        if bind_stack:
+            self._bind_stack = []
+        else:
+            self._bind_stack = bind_stack
 
     def __eq__(self, other: "MonadWithException") -> bool:
         return self._value == other._value and self._exception == other._exception
@@ -40,7 +50,14 @@ class LazyEvalMonadWithException:
             raise self._exception
         return self._value
     
-    def bind(self, func: Callable) -> "MonadWithException":
+    def bind(self, func: Callable) -> "LazyEvalMonadWithException":
+        return LazyEvalMonadWithException(
+            value=self.value, 
+            exception=self._exception,
+            bind_stack=self._bind_stack+[func],
+        )
+
+    def _bind(self, func: Callable) -> "MonadWithException":
         if self._exception:
             return self
         try:
