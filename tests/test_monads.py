@@ -44,6 +44,13 @@ def test_lazy_eval_monad_pipe():
     assert res.value == 3
 
 
+def test_lazy_eval_monad_pipe_doesnt_loose_value():
+    monad = LazyEvalMonadWithException(value=1)
+    res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
+    assert res.value == 3
+    assert res.value == 3
+
+
 def test_monad_pipe_doesnt_mutate_first_monad():
     monad = MonadWithException(value=1)
     copy_monad = deepcopy(monad)
