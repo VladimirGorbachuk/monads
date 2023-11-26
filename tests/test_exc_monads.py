@@ -25,7 +25,7 @@ def test_monad_factorial():
 
 
 def test_monad_zero_division():
-    monad = MonadWithException(value = 0)
+    monad = MonadWithException(value=0)
     res = monad.bind(lambda x: 1/x)
     with pytest.raises(ZeroDivisionError):
         res.value
