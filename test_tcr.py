@@ -54,3 +54,5 @@ def test_monad_zero_division():
 
 def test_monad_pipe():
     monad = MonadWithException(value=1)
+    res = monad.bind(lambda x: x+1).bind(lambda x: x+1)
+    assert res.value == 3
