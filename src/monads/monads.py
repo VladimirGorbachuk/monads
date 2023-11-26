@@ -52,11 +52,12 @@ class LazyEvalMonadWithException:
     def value(self) -> Any:
         if self._exception:
             raise self._exception
+        current_instance = self
         for func in self._bind_stack:
-            self = self._bind_and_calculate(func)
-            if self._exception:
-                raise self._exception
-        return self._value
+            current_instance = current_instance._bind_and_calculate(func)
+            if current_instance._exception:
+                raise current_instance._exception
+        return current_instance._value
 
     def bind(self, func: Callable) -> "LazyEvalMonadWithException":
         return LazyEvalMonadWithException(
