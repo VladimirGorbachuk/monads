@@ -58,6 +58,13 @@ def test_monad_pipe_doesnt_mutate_first_monad():
     assert monad == copy_monad
 
 
+def test_lazy_monad_pipe_keeps_exception():
+    monad = LazyEvalMonadWithException(value = 0)
+    res = monad.bind(lambda x: 1/x).bind(lambda x: x+1)
+    with pytest.raises(ZeroDivisionError):
+        res.value
+
+
 def test_monad_pipe_keeps_exception():
     monad = MonadWithException(value = 0)
     res = monad.bind(lambda x: 1/x).bind(lambda x: x+1)
