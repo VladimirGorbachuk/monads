@@ -119,6 +119,16 @@ async def test_async_monad_async_bind_pipe_doesnt_mutate_starting_monad():
 
 
 @pytest.mark.asyncio
+async def test_async_monad_raises_doesnt_mutate_starting_monad():
+    async_monad = AsyncMonadWithException(value=0)
+    copy_monad = deepcopy(async_monad)
+    result_monad = async_monad.async_bind(async_divide_one_by_value).async_bind(async_add_one)
+    with pytest.raises(ZeroDivisionError):
+        await result_monad.get_value()
+    assert copy_monad == async_monad
+
+
+@pytest.mark.asyncio
 async def test_async_monad_sync_bind():
     async_monad = AsyncMonadWithException(value=1)
     result_monad = async_monad.bind(lambda x: x+1)
