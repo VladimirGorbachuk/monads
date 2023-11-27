@@ -11,14 +11,14 @@ def test_instantiates_not_is_right():
     assert either_instance.is_right is False
 
 
-def test_binds_right():
+def test_righ_binds_right_func():
     either_instance = EitherMonad(value=3, either_enum=EitherMonadEnum.RIGHT)
     new_instance = either_instance.bind_either_funcs(lambda x: x-1, lambda x: x+1)
     assert new_instance.is_right is True
     assert new_instance.value == 4
 
 
-def test_binds_left():
+def test_left_binds_left_func():
     either_instance = EitherMonad(value=3, either_enum=EitherMonadEnum.LEFT)
     new_instance = either_instance.bind_either_funcs(lambda x: x-1, lambda x: x+1)
     assert new_instance.is_right is False
