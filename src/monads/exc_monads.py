@@ -3,7 +3,7 @@ from typing import Any, Awaitable, Callable, Coroutine, List, Optional
 
 class MonadWithException:
     """monad allowing to trace exception in Railway oriented programming fashion"""
-    def __init__(self, *, value: Any, exception: Optional[Exception] = None) -> None:
+    def __init__(self, *, value: Any, exception: Exception | None = None) -> None:
         self._value = value
         self._exception = exception
 
@@ -33,7 +33,7 @@ class LazyEvalMonadWithException:
         self,
         *,
         value: Any,
-        exception: Optional[Exception] = None,
+        exception: Exception | None = None,
         bind_stack: Optional[List[Callable]] = None,
     ) -> None:
         self._value = value
@@ -83,7 +83,7 @@ class AsyncMonadWithException:
         *,
         value: Optional[Any] = None,
         coroutine: Optional[Coroutine] = None,
-        exception: Optional[Exception] = None,
+        exception: Exception | None = None,
     ) -> None:
         self._value = value
         self._coroutine = coroutine
