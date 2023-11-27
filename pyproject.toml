@@ -12,7 +12,7 @@ authors = [
     { name = "Vladimir Gorbachuk", email = "vladimirgorbachuk@gmail.com" },
 ]
 description = "TCR-driven monads development"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",
