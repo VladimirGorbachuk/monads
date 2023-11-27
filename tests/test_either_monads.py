@@ -23,3 +23,6 @@ def test_binds_left():
     new_instance = either_instance.bind_either(lambda x: x-1, lambda x: x+1)
     assert new_instance.is_right is False
     assert new_instance.value == 2
+
+
+# the tests above are not true either (funcs should return either monad, not just process values)
