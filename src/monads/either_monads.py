@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any
+from typing import Any, Callable
 
 
 class EitherMonadEnum(Enum):
@@ -11,3 +11,8 @@ class EitherMonad:
     def __init__(self, value: Any, either_enum: EitherMonadEnum):
         self.value = value
         self.is_right = either_enum is EitherMonadEnum.RIGHT
+
+    def bind_either(self, left_func: Callable, right_func: Callable) -> "EitherMonad":
+        if self.is_right:
+            return self.__class__(value=right_func(self.value), either_enum=EitherMonadEnum.RIGHT)
+        return self.__class__(value=left_func(self.value), either_enum=EitherMonadEnum.LEFT)
