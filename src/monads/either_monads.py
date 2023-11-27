@@ -12,7 +12,7 @@ class EitherMonad:
         self.value = value
         self.is_right = either_enum is EitherMonadEnum.RIGHT
 
-    def bind_either(self, left_func: Callable, right_func: Callable) -> "EitherMonad":
+    def bind_either_funcs(self, left_func: Callable, right_func: Callable) -> "EitherMonad":
         if self.is_right:
             return self.__class__(value=right_func(self.value), either_enum=EitherMonadEnum.RIGHT)
         return self.__class__(value=left_func(self.value), either_enum=EitherMonadEnum.LEFT)
