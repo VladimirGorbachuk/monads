@@ -1,4 +1,4 @@
-from typing import Any, Awaitable, Callable, Coroutine, List, Optional
+from typing import Any, Awaitable, Callable, Coroutine, Optional
 
 
 class MonadWithException:
@@ -34,7 +34,7 @@ class LazyEvalMonadWithException:
         *,
         value: Any,
         exception: Exception | None = None,
-        bind_stack: Optional[List[Callable]] = None,
+        bind_stack: list[Callable] | None = None,
     ) -> None:
         self._value = value
         self._exception = exception
