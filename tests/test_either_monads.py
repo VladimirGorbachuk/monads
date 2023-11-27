@@ -44,4 +44,9 @@ def test_zero_division_either_monadic_callable_for_right_with_exception_gives_le
     monad = EitherMonad(value=0, either_enum=EitherMonadEnum.RIGHT)
     assert monad.bind(_either_binding_callable_zero_division).is_right is False
 
-# the tests above are not true either (funcs should return either monad, not just process values)
+
+def test_zero_division_either_monadic_callable_for_left() -> EitherMonad:
+    monad = EitherMonad(value=ValueError("all gone wrong"), either_enum=EitherMonadEnum.LEFT)
+    res_monad = monad.bind(_either_binding_callable_zero_division)
+    assert res_monad.is_right is False
+    assert isinstance(res_monad.value, ValueError) is True
