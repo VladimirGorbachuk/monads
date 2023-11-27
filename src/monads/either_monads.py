@@ -2,6 +2,9 @@ from enum import Enum
 from typing import Any, Callable
 
 
+EitherMonadFunc = Callable[["EitherMonad"], "EitherMonad"]
+
+
 class EitherMonadEnum(Enum):
     LEFT = "left"
     RIGHT = "right"
@@ -17,5 +20,5 @@ class EitherMonad:
             return self.__class__(value=right_func(self.value), either_enum=EitherMonadEnum.RIGHT)
         return self.__class__(value=left_func(self.value), either_enum=EitherMonadEnum.LEFT)
 
-    def bind(self, either_func: Callable[["EitherMonad"], "EitherMonad"]) -> "EitherMonad":
+    def bind(self, either_func: EitherMonadFunc) -> "EitherMonad":
         return either_func(self)
