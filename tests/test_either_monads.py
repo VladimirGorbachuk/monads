@@ -50,3 +50,10 @@ def test_zero_division_either_monadic_callable_for_left() -> EitherMonad:
     res_monad = monad.bind(_either_binding_callable_zero_division)
     assert res_monad.is_right is False
     assert isinstance(res_monad.value, ValueError) is True
+
+
+def test_zero_division_either_monadic_callable_pipe_error_follows_with_left_func() -> EitherMonad:
+    monad = EitherMonad(value=0, either_enum=EitherMonadEnum.RIGHT)
+    zde_monad = monad.bind(_either_binding_callable_zero_division)
+    bool_valued_monad = zde_monad.bind_either_funcs(lambda x: isinstance(x, ZeroDivisionError), lambda x: x+1)
+    assert bool_valued_monad.value is True
