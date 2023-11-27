@@ -1,4 +1,4 @@
-from typing import Any, Awaitable, Callable, Coroutine, Optional
+from typing import Any, Awaitable, Callable, Coroutine
 
 
 class MonadWithException:
@@ -81,8 +81,8 @@ class AsyncMonadWithException:
     def __init__(
         self,
         *,
-        value: Optional[Any] = None,
-        coroutine: Optional[Coroutine] = None,
+        value: Any | None = None,
+        coroutine: Coroutine | None = None,
         exception: Exception | None = None,
     ) -> None:
         self._value = value
