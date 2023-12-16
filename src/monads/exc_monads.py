@@ -30,7 +30,7 @@ class MonadWithException(MonadType):
             return MonadWithException(value=self._value, exception=e)
 
 
-class LazyEvalMonadWithException:
+class LazyEvalMonadWithException(MonadType):
     def __init__(
         self,
         *,
