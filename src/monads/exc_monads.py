@@ -79,7 +79,7 @@ class LazyEvalMonadWithException(MonadType):
             return self
 
 
-class AsyncMonadWithException:
+class AsyncMonadWithException(MonadType):
     def __init__(
         self,
         *,
