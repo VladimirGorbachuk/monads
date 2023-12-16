@@ -1,7 +1,9 @@
 from typing import Any, Awaitable, Callable, Coroutine
 
+from .type_monad import MonadType
 
-class MonadWithException:
+
+class MonadWithException(MonadType):
     """monad allowing to trace exception in Railway oriented programming fashion"""
     def __init__(self, *, value: Any, exception: Exception | None = None) -> None:
         self._value = value
