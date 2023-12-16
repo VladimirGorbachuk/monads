@@ -1,12 +1,12 @@
-from typing import Generic, TypeVar
+from typing import Callable, Generic, TypeVar
 
 
 ValueType = TypeVar("ValueType")
-CallableBoundType = TypeVar("CallableBoundType")
+ReturnedValueType = TypeVar("ReturnedValueType")
 
 
 class MonadType(Generic[ValueType]):
     _value: ValueType
 
-    def bind(self, func: CallableBoundType) -> "MonadType":
+    def bind(self, func: Callable[[ValueType], ReturnedValueType]) -> "MonadType[ReturnedValueType]":
         raise NotImplementedError
